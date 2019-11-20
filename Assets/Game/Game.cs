@@ -20,5 +20,17 @@ public class Game
 
     private Game()
     {
+        world = GameObject.Find("World").GetComponent<World>();
+    }
+
+    public static void Restart()
+    {
+        instance = null;
+    }
+
+    public static void Exit()
+    {
+        Application.Quit();
+        EditorApplication.isPlaying = false;
     }
 }
