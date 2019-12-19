@@ -19,6 +19,12 @@ public class World : MonoBehaviour
 
     public Material deskGroundMat;
 
+    public Sprite[] weaponSprites;
+
+    public Sprite health;
+
+    public GameObject mobDeath;
+
     void Awake()
     {
         Application.targetFrameRate = 60;
