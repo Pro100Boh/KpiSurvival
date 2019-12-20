@@ -10,7 +10,6 @@ public class WeaponContainer : ActorBehaviour<Player>
     private const int WEAPONS_COUNT = 4;
 
     private Image currentArea;
-    private float scrollSwitcher;
 
     private int selected = 0;
     private int activeCount;
@@ -48,8 +47,10 @@ public class WeaponContainer : ActorBehaviour<Player>
     {
         if (locked || activeCount == 0)
             return;
-        scrollSwitcher += Input.GetAxis("Mouse ScrollWheel");
-        if (scrollSwitcher > 1)
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+
+        if (scroll > 0.0f)
         {
             if (selected + 1 == activeCount)
             {
@@ -61,7 +62,7 @@ public class WeaponContainer : ActorBehaviour<Player>
             }
             Equip();
         }
-        else if (scrollSwitcher < -1)
+        else if (scroll < 0.0f)
         {
             if (selected == 0)
             {
@@ -114,7 +115,6 @@ public class WeaponContainer : ActorBehaviour<Player>
 
     public void Equip()
     {
-        scrollSwitcher = 0;
         for (int i = 0; i < activeCount; i++)
         {
             weapons[i].gameObject.SetActive(i == selected);
