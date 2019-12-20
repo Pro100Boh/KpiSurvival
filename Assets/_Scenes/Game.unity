@@ -9113,11 +9113,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4318684384071796, guid: c6bebae48224844918c456db8f6c7c9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.81
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4318684384071796, guid: c6bebae48224844918c456db8f6c7c9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4318684384071796, guid: c6bebae48224844918c456db8f6c7c9c, type: 3}
       propertyPath: m_LocalPosition.z
