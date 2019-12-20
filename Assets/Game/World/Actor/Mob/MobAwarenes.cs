@@ -12,7 +12,7 @@ public class MobAwarenes : ActorBehaviour<Mob>
 
     void Start()
     {
-        fovRadius = 2;
+        fovRadius = 2.5f;
         fovOffset = new Vector2(0, 1);
         fieldOfView = gameObject.AddComponent<CircleCollider2D>();
         fieldOfView.radius = fovRadius;

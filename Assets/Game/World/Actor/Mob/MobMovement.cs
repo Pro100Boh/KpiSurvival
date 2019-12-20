@@ -39,10 +39,10 @@ public class MobMovement : ActorBehaviour<Mob>
         stepDelay += Time.deltaTime;
         if (stepDelay < stepSpeed)
             return;
-        float variantSpeed = 10 * (7 - stepSpeed / 0.05F);
+        float variantSpeed = 15 * (7 - stepSpeed / 0.05F);
 
         Actor().Body().AddForce(look * variantSpeed);
-        if (stepSpeed > 0.15)
+        if (stepSpeed > 0.12)
             stepSpeed -= 0.025f;
     }
 
