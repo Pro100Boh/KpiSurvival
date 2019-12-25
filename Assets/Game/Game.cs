@@ -4,6 +4,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameState
+{
+    FirstGame,
+    PlayerDied,
+    PlayerWon
+}
+
 public class Game
 {
     public const int TILE_LAYER = 9;
@@ -14,7 +21,7 @@ public class Game
 
     private static Game instance;
 
-    private static bool playerDied = false;
+    public static GameState gameState = GameState.FirstGame;
 
     public static Game Instance
     {
@@ -23,13 +30,6 @@ public class Game
             if (instance == null)
                 instance = new Game();
             return instance;
-        }
-    }
-    public static bool PlayerDied
-    {
-        get
-        {
-            return playerDied;
         }
     }
 
@@ -45,7 +45,13 @@ public class Game
 
     public static void PlayerDeath()
     {
-        playerDied = true;
+        gameState = GameState.PlayerDied;
+        SceneManager.LoadScene("Menu");
+    }
+
+    public static void PlayerVictory()
+    {
+        gameState = GameState.PlayerWon;
         SceneManager.LoadScene("Menu");
     }
 
@@ -61,5 +67,10 @@ public class Game
         #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
         #endif
+    }
+
+    public static int GetCurrentMobsCount()
+    {
+        return Resources.FindObjectsOfTypeAll(typeof(Mob)).Length;
     }
 }

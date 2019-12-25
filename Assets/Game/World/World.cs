@@ -37,5 +37,8 @@ public class World : MonoBehaviour
         {
             Game.Exit();
         }
+
+        if (Game.GetCurrentMobsCount() == 0)
+            Game.PlayerVictory();
     }
 }

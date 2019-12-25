@@ -10,12 +10,22 @@ public class MenuControls : MonoBehaviour
 {
     void Update()
     {
-        if (Game.PlayerDied)
+        if (Game.gameState == GameState.PlayerDied)
         {
-            var menuText = Resources.FindObjectsOfTypeAll(typeof(Text)).Cast<Text>().Where(t => t.name == "MenuText").First();
-            menuText.alignment = TextAnchor.MiddleCenter;
-            menuText.text = "you died!";
+            UpdateMenuText("you died!");
         }
+        else if (Game.gameState == GameState.PlayerWon)
+        {
+            UpdateMenuText("you won!");
+        }
+    }
+
+
+    public void UpdateMenuText(string text)
+    {
+        Text menuText = Resources.FindObjectsOfTypeAll(typeof(Text)).Cast<Text>().Where(t => t.name == "MenuText").First();
+        menuText.alignment = TextAnchor.MiddleCenter;
+        menuText.text = text;
     }
 
     public void PlayPressed()
