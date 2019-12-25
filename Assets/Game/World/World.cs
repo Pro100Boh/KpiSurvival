@@ -32,8 +32,8 @@ public class World : MonoBehaviour
 
     void Update()
     {
-        // exit by 'P'
-        if (Input.GetKeyDown(KeyCode.P))
+        // exit by Escape
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Game.Exit();
         }

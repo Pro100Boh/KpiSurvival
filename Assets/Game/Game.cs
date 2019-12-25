@@ -14,6 +14,8 @@ public class Game
 
     private static Game instance;
 
+    private static bool playerDied = false;
+
     public static Game Instance
     {
         get
@@ -21,6 +23,13 @@ public class Game
             if (instance == null)
                 instance = new Game();
             return instance;
+        }
+    }
+    public static bool PlayerDied
+    {
+        get
+        {
+            return playerDied;
         }
     }
 
@@ -36,19 +45,11 @@ public class Game
 
     public static void PlayerDeath()
     {
-        if (EditorUtility.DisplayDialog("Game over", "You died!", "Exit", "Restart"))
-        {
-            Exit();
-        }
-        else
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-            Restart();
-        }
+        playerDied = true;
+        SceneManager.LoadScene("Menu");
     }
 
-    public static void Restart()
+    public static void StartNewGame()
     {
         instance = null;
     }
@@ -56,6 +57,9 @@ public class Game
     public static void Exit()
     {
         Application.Quit();
+
+        #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
+        #endif
     }
 }

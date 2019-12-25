@@ -14,6 +14,24 @@ public class Mob : Actor
 
     private readonly WaitForSeconds deathDelay = new WaitForSeconds(1f);
 
+    private const float rotation = 1.0f;
+    private const int intervalRotation = 100;
+    private int counter = -intervalRotation;
+
+    void Update()
+    {
+        counter++;
+
+        if (counter < 0)
+            transform.Rotate(0.0f, 0.0f, Random.Range(0f, rotation));
+
+        if (counter > 0)
+            transform.Rotate(0.0f, 0.0f, Random.Range(-rotation, 0f));
+
+        if (counter > intervalRotation)
+            counter = -intervalRotation;
+    }
+
     public override void Initialize()
     {
         animator = gameObject.GetComponentInChildren<Animator>();
